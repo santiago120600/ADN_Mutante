@@ -1,3 +1,4 @@
+import re
 # Realizar un algoritmo que detecte si una persona tiene diferencias genéticas basándose en su secuencia de ADN.
 # El algoritmo debe recibir como parámetro un arreglo de cadenas de caracteres que representan cada fila de una
 # tabla de NxN con la secuencia del ADN y devolver un verdadero en caso que se encuentre una mutación o falso
@@ -29,7 +30,7 @@ def algoritmo(arreglo):
         num_coincidencias_diagonal = checar_diagonal(matriz)
         # depues sumar 
         # num_coincidencias_total = num_coincidencias_horizontal + num_coincidencias_vertical + num_coincidencias_diagonal
-        print(num_coincidencias_horizontal)
+        print("numero horizontal: ",num_coincidencias_horizontal," numero vertical:",num_coincidencias_vertical)
         # si el numero de coincidencias es mayor a 1 entonces es mutante
         # if num_coincidencias_total > 1:
         #     return True
@@ -67,9 +68,22 @@ def checar_horizontal(matriz):
         else:
             continue
     return contador
-        
+
+# Crear una lista una lista de listas con las listas verticales y despues pasarla a checar_horizontal
 def checar_vertical(matriz):
-    pass
+    largo_fila = len(matriz[0][0])
+    sublista = []
+    contador = 0
+    # hacer una sublista a partir de la matriz que contenga los caracteres de forma vertical
+    while contador < largo_fila:
+        for fila in matriz:
+            sublista.append(fila[0][contador]) 
+        contador+=1
+    # convertir lista a string
+    caracteres_horz = ["".join(sublista)]
+    # lista final 
+    lista_horizontal = re.findall('.'*largo_fila,caracteres_horz[0])
+    return checar_horizontal(lista_horizontal)
 
 def checar_diagonal(matriz):
     pass
@@ -103,4 +117,5 @@ if __name__ == '__main__':
     ]
     # dna = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTW" ]
     algoritmo(dna_mutante)
+    # print(checar_vertical(dna_mutante))
     
