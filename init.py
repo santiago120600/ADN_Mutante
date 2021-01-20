@@ -16,9 +16,14 @@
 # algoritmo recibe array de cadenas de caracteres
 # String[] dna = [“ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" ];
 def algoritmo(arreglo):
-    # volver cada string una lista
-    lista_listas = crear_listas(arreglo)
-    print(lista_listas)
+    # checar que solo contenga A, T, C, G los string
+    validado = validacion(arreglo)
+    if validado != False:
+        # volver cada string una lista
+        lista_listas = crear_listas(arreglo)
+        print(lista_listas)
+    else:
+        return False
 
 # method para volver la lista de strings una lista de listas
 def crear_listas(lista):
@@ -27,10 +32,19 @@ def crear_listas(lista):
         nueva_lista.append([i])
     return nueva_lista
 
+def validacion(lista):
+    for sublista in lista:
+        for caracter in sublista:
+            if caracter == 'A' or caracter == 'T'  or caracter == 'C'  or caracter == 'G':
+                continue
+            else: 
+                return False
+
 
 # Sabrás sí existe una mutación si se encuentra más de una secuencia de cuatro letras iguales, de forma oblicua,
 # horizontal o vertical.
 
 if __name__ == '__main__':
     dna = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" ]
+    # dna = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTW" ]
     algoritmo(dna)
