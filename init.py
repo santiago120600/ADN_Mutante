@@ -95,12 +95,16 @@ def checar_diagonal(matriz):
 def diagonales_izq(matriz):
     diagonales = []
     contador = 0
+    numero_fila = 0
+    diagonales_izq_final = []
+    # que el for loop se reinicie pero empezando en la siguiente lista no en la primera
     for fila in matriz:
         diagonales.append(fila[0][contador])
         contador+=1
-    diagonales = convertir_a_string(diagonales)
-    print(diagonales)
-
+    # convertir a string la lista y meter a otra lista 
+    sublista = convertir_a_string(diagonales)
+    diagonales_izq_final.append(sublista)
+    print(diagonales_izq_final)
 
 def diagonales_der(matriz):
     pass
@@ -137,4 +141,3 @@ if __name__ == '__main__':
     # algoritmo(dna_mutante)
     # print(checar_vertical(dna_mutante))
     checar_diagonal([['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']])
-    
