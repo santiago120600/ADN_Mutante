@@ -93,6 +93,12 @@ def checar_diagonal(matriz):
     return diagonales_totales
 
 def diagonales_izq(matriz):
+   num_diagonales_abajo_mitad = diagonales_abajo_mitad(matriz)
+   num_diagonales_arriba_mitad = diagonales_arriba_mitad(matriz)
+   diagonalies_izq_totales = num_diagonales_arriba_mitad + num_diagonales_abajo_mitad
+   return diagonalies_izq_totales
+
+def diagonales_abajo_mitad(matriz):
     diagonales_izq_final = []
     # que el for loop se reinicie pero empezando en la siguiente lista no en la primera
     while len(matriz) > 0:
@@ -107,6 +113,9 @@ def diagonales_izq(matriz):
         matriz = matriz[1:]
     # checar si la sublista contiene las coincidencias
     return checar_horizontal(diagonales_izq_final)
+
+def diagonales_arriba_mitad(matriz):
+    pass
 
 def diagonales_der(matriz):
     # reverse matrix y usar el diagonales izq
@@ -169,6 +178,7 @@ if __name__ == '__main__':
     # algoritmo(dna_mutante)
     # print(checar_vertical(dna_mutante))
     # print(checar_diagonal([['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']]))
+
     print(diagonales_izq([
         ['ATGCGA'], 
         ['CAGTGC'], 
@@ -178,5 +188,13 @@ if __name__ == '__main__':
         ['TCACTG']
         ]))
     # print(revertir_matriz([['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']]))
+    # print(diagonales_abajo_mitad([
+    #     ['ATGCGA'], 
+    #     ['CAGTGC'], 
+    #     ['TCATGT'], 
+    #     ['AGCAGG'], 
+    #     ['CCCCTA'], 
+    #     ['TCACTG']
+    #     ]))
 
 
