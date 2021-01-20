@@ -20,8 +20,14 @@ def algoritmo(arreglo):
     validado = validacion(arreglo)
     if validado != False:
         # volver cada string una lista
-        lista_listas = crear_listas(arreglo)
-        print(lista_listas)
+        matriz = crear_listas(arreglo)
+        #metodo para checar las hotizontales
+        num_coincidencias_horizontal = checar_horizontal(matriz)
+        #metodo para checar las verticales
+        num_coincidencias_vertical = checar_vertical(matriz)
+        #metodo para checar las diagonales
+        num_coincidencias_diagonal = checar_diagonal(matriz)
+        print(matriz)
     else:
         return False
 
@@ -40,11 +46,54 @@ def validacion(lista):
             else: 
                 return False
 
+# reciben una lista de listas(matriz)
+# [['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']]
+# que estas funciones retornen el numero de secuencias de cuatro letras iguales
+# para despues sumar el numero de coincidencias y si son mas de una entonces retornar falso
+def checar_horizontal(matriz):
+    for fila in matriz:
+        # convertir lista a string
+        fila_string = convertir_a_string(fila)
+        # checar si se encuentra el patron AAAA TTTT CCCC GGGG
+        # if "AAAA" or "TTTT" or "CCCC" or "GGGG" in fila_string:
+        #     print(fila_string)
+        # else:
+        #     print("False")
+        print(fila_string)
+        
+def checar_vertical(matriz):
+    pass
+
+def checar_diagonal(matriz):
+    pass
+
+def convertir_a_string(lista):
+    string = ""
+    for i in lista:
+        string += i
+    return string
+
 
 # Sabrás sí existe una mutación si se encuentra más de una secuencia de cuatro letras iguales, de forma oblicua,
 # horizontal o vertical.
 
 if __name__ == '__main__':
-    dna = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" ]
+    dna_mutante = [ 
+        "ATGCGA", 
+        "CAGTGC",
+        "TTATGT",
+        "AGAAGG",
+        "CCCCTA",
+        "TCACTG" 
+            ]
+    dna_sin = [
+        "ATGCGA", 
+        "CAGTGC",
+        "TTATTT",
+        "AGACGG",
+        "GCGTCA",
+        "TCACTG" 
+    ]
     # dna = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTW" ]
-    algoritmo(dna)
+    # algoritmo(dna_mutante)
+    checar_horizontal([['TTTTGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']])
