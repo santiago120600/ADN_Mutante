@@ -115,7 +115,23 @@ def diagonales_abajo_mitad(matriz):
     return checar_horizontal(diagonales_izq_final)
 
 def diagonales_arriba_mitad(matriz):
-    pass
+    diagonales_izq_final = []
+    # primero que empiece en la segunda columna, punto matriz[0][0][1]
+    diagonales = []
+    contador = 1
+    for fila in matriz:
+        conta_num_letra = 0
+        for letras in fila:
+            for letra in letras:
+                if conta_num_letra != contador:
+                    conta_num_letra += 1
+                else:
+                    diagonales.append(letra)
+                    conta_num_letra +=1
+        contador+=1
+    sublista = convertir_a_string(diagonales)
+    return sublista
+
 
 def diagonales_der(matriz):
     # reverse matrix y usar el diagonales izq
@@ -179,7 +195,7 @@ if __name__ == '__main__':
     # print(checar_vertical(dna_mutante))
     # print(checar_diagonal([['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']]))
 
-    print(diagonales_izq([
+    print(diagonales_arriba_mitad([
         ['ATGCGA'], 
         ['CAGTGC'], 
         ['TCATGT'], 
