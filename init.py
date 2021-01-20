@@ -93,17 +93,18 @@ def checar_diagonal(matriz):
     return diagonales_totales
 
 def diagonales_izq(matriz):
-    diagonales = []
-    contador = 0
-    numero_fila = 0
     diagonales_izq_final = []
     # que el for loop se reinicie pero empezando en la siguiente lista no en la primera
-    for fila in matriz:
-        diagonales.append(fila[0][contador])
-        contador+=1
-    # convertir a string la lista y meter a otra lista 
-    sublista = convertir_a_string(diagonales)
-    diagonales_izq_final.append(sublista)
+    while len(matriz) > 0:
+        diagonales = []
+        contador = 0
+        for fila in matriz:
+            diagonales.append(fila[0][contador])
+            contador+=1
+        # convertir a string la lista y meter a otra lista 
+        sublista = convertir_a_string(diagonales)
+        diagonales_izq_final.append(sublista)
+        matriz = matriz[1:]
     # checar si la sublista contiene las coincidencias
     return checar_horizontal(diagonales_izq_final)
 
@@ -165,9 +166,17 @@ if __name__ == '__main__':
         "TCACTG" 
     ]
     # dna = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTW" ]
-    algoritmo(dna_mutante)
+    # algoritmo(dna_mutante)
     # print(checar_vertical(dna_mutante))
-    # checar_diagonal([['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']])
+    # print(checar_diagonal([['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']]))
+    print(diagonales_izq([
+        ['ATGCGA'], 
+        ['CAGTGC'], 
+        ['TCATGT'], 
+        ['AGCAGG'], 
+        ['CCCCTA'], 
+        ['TCACTG']
+        ]))
     # print(revertir_matriz([['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']]))
 
 
