@@ -29,11 +29,11 @@ def algoritmo(arreglo):
         #metodo para checar las diagonales
         num_coincidencias_diagonal = checar_diagonal(matriz)
         # depues sumar 
-        # num_coincidencias_total = num_coincidencias_horizontal + num_coincidencias_vertical + num_coincidencias_diagonal
-        print("numero horizontal: ",num_coincidencias_horizontal," numero vertical:",num_coincidencias_vertical)
+        num_coincidencias_total = num_coincidencias_horizontal + num_coincidencias_vertical + num_coincidencias_diagonal
+        print("numero horizontal: ",num_coincidencias_horizontal," numero vertical:",num_coincidencias_vertical,"numero coincidencias diagonal:",num_coincidencias_diagonal)
         # si el numero de coincidencias es mayor a 1 entonces es mutante
-        # if num_coincidencias_total > 1:
-        #     return True
+        if num_coincidencias_total > 1:
+            return True
     else:
         return False
 
@@ -87,10 +87,10 @@ def checar_vertical(matriz):
 
 def checar_diagonal(matriz):
     diagIz = diagonales_izq(matriz)
-    # diagDer = diagonales_der(matriz) #llamarla cuando el metodo diagonales_izq este terminado
+    diagDer = diagonales_der(matriz) 
     # sumar diagIz y diagDer
-    # diagonales_totales = diagIz + diagDer
-    # return diagonales_totales
+    diagonales_totales = diagIz + diagDer
+    return diagonales_totales
 
 def diagonales_izq(matriz):
     diagonales = []
@@ -104,8 +104,8 @@ def diagonales_izq(matriz):
     # convertir a string la lista y meter a otra lista 
     sublista = convertir_a_string(diagonales)
     diagonales_izq_final.append(sublista)
-    print(diagonales_izq_final)
-    # tiene que retornar el numero de coincidencias
+    # checar si la sublista contiene las coincidencias
+    return checar_horizontal(diagonales_izq_final)
 
 def diagonales_der(matriz):
     # reverse matrix y usar el diagonales izq
@@ -165,9 +165,9 @@ if __name__ == '__main__':
         "TCACTG" 
     ]
     # dna = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTW" ]
-    # algoritmo(dna_mutante)
+    algoritmo(dna_mutante)
     # print(checar_vertical(dna_mutante))
-    checar_diagonal([['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']])
+    # checar_diagonal([['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']])
     # print(revertir_matriz([['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']]))
 
 
