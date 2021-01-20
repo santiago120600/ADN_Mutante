@@ -27,7 +27,12 @@ def algoritmo(arreglo):
         num_coincidencias_vertical = checar_vertical(matriz)
         #metodo para checar las diagonales
         num_coincidencias_diagonal = checar_diagonal(matriz)
-        print(matriz)
+        # depues sumar 
+        # num_coincidencias_total = num_coincidencias_horizontal + num_coincidencias_vertical + num_coincidencias_diagonal
+        print(num_coincidencias_horizontal)
+        # si el numero de coincidencias es mayor a 1 entonces es mutante
+        # if num_coincidencias_total > 1:
+        #     return True
     else:
         return False
 
@@ -51,15 +56,17 @@ def validacion(lista):
 # que estas funciones retornen el numero de secuencias de cuatro letras iguales
 # para despues sumar el numero de coincidencias y si son mas de una entonces retornar falso
 def checar_horizontal(matriz):
+    # contador para contar el numero de apariciones de string
+    contador = 0
     for fila in matriz:
         # convertir lista a string
         fila_string = convertir_a_string(fila)
         # checar si se encuentra el patron AAAA TTTT CCCC GGGG
-        # if "AAAA" or "TTTT" or "CCCC" or "GGGG" in fila_string:
-        #     print(fila_string)
-        # else:
-        #     print("False")
-        print(fila_string)
+        if fila_string.find("TTTT") != -1 or fila_string.find("AAAA") != -1 or fila_string.find("CCCC") != -1 or fila_string.find("GGGG") != -1:
+            contador +=1
+        else:
+            continue
+    return contador
         
 def checar_vertical(matriz):
     pass
@@ -95,5 +102,5 @@ if __name__ == '__main__':
         "TCACTG" 
     ]
     # dna = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTW" ]
-    # algoritmo(dna_mutante)
-    checar_horizontal([['TTTTGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']])
+    algoritmo(dna_mutante)
+    
