@@ -87,7 +87,7 @@ def checar_vertical(matriz):
 
 def checar_diagonal(matriz):
     diagIz = diagonales_izq(matriz)
-    diagDer = diagonales_der(matriz)
+    # diagDer = diagonales_der(matriz) #llamarla cuando el metodo diagonales_izq este terminado
     # sumar diagIz y diagDer
     # diagonales_totales = diagIz + diagDer
     # return diagonales_totales
@@ -105,10 +105,37 @@ def diagonales_izq(matriz):
     sublista = convertir_a_string(diagonales)
     diagonales_izq_final.append(sublista)
     print(diagonales_izq_final)
+    # tiene que retornar el numero de coincidencias
 
 def diagonales_der(matriz):
-    pass
+    # reverse matrix y usar el diagonales izq
+    matriz_reversa = revertir_matriz(matriz)
+    # retornar el numero de numero de coincidencias
+    return diagonales_izq(matriz_reversa)
 
+def revertir_matriz(matriz):
+    # retornar una matriz reversa
+    reversa = []
+    for fila in matriz:
+        reversa.append([fila[0][::-1]])
+    return reversa
+
+# [
+#     ['A T G C G A'], 
+#     ['C A G T G C'], 
+#     ['T T A T G T'], 
+#     ['A G A A G G'], 
+#     ['C C C C T A'], 
+#     ['T C A C T G']
+#     ]
+# [
+#     ['A G C G T A'], 
+#     ['C G T G A C'], 
+#     ['T G T A T T'], 
+#     ['G G A A G A'], 
+#     ['A T C C C C'], 
+#     ['G T C A C T']
+# ]
 
 def convertir_a_string(lista):
     string = ""
@@ -141,3 +168,6 @@ if __name__ == '__main__':
     # algoritmo(dna_mutante)
     # print(checar_vertical(dna_mutante))
     checar_diagonal([['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']])
+    # print(revertir_matriz([['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']]))
+
+
