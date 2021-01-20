@@ -86,7 +86,25 @@ def checar_vertical(matriz):
     return checar_horizontal(lista_horizontal)
 
 def checar_diagonal(matriz):
+    diagIz = diagonales_izq(matriz)
+    diagDer = diagonales_der(matriz)
+    # sumar diagIz y diagDer
+    # diagonales_totales = diagIz + diagDer
+    # return diagonales_totales
+
+def diagonales_izq(matriz):
+    diagonales = []
+    contador = 0
+    for fila in matriz:
+        diagonales.append(fila[0][contador])
+        contador+=1
+    diagonales = convertir_a_string(diagonales)
+    print(diagonales)
+
+
+def diagonales_der(matriz):
     pass
+
 
 def convertir_a_string(lista):
     string = ""
@@ -116,6 +134,7 @@ if __name__ == '__main__':
         "TCACTG" 
     ]
     # dna = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTW" ]
-    algoritmo(dna_mutante)
+    # algoritmo(dna_mutante)
     # print(checar_vertical(dna_mutante))
+    checar_diagonal([['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']])
     
