@@ -189,6 +189,15 @@ if __name__ == '__main__':
         "CCCCTA",
         "TCACTG" 
             ]
+
+    dna_super_mutante = [ 
+        "ATGCGA", 
+        "AAGTAA",
+        "ATAAGA",
+        "AGAAGA",
+        "CCCCTA",
+        "AAAATG" 
+            ]
     dna_sin = [
         "ATGCGA", 
         "CAGTGC",
@@ -198,7 +207,11 @@ if __name__ == '__main__':
         "TCACTG" 
     ]
     # dna = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTW" ]
-    algoritmo(dna_mutante)
+    respuesta = algoritmo(dna_super_mutante)
+    if respuesta:
+        print("Es mutante")
+    else:
+        print("No es mutante")
     # print(checar_vertical(dna_mutante))
     # print(checar_diagonal([['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']]))
 
