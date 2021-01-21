@@ -116,21 +116,28 @@ def diagonales_abajo_mitad(matriz):
 
 def diagonales_arriba_mitad(matriz):
     diagonales_izq_final = []
-    # primero que empiece en la segunda columna, punto matriz[0][0][1]
-    diagonales = []
-    contador = 1
-    for fila in matriz:
-        conta_num_letra = 0
-        for letras in fila:
-            for letra in letras:
-                if conta_num_letra != contador:
-                    conta_num_letra += 1
-                else:
-                    diagonales.append(letra)
-                    conta_num_letra +=1
-        contador+=1
-    sublista = convertir_a_string(diagonales)
-    return sublista
+    cantidad_columnas = len(matriz)-1
+    num_columna = 1
+    while num_columna <= cantidad_columnas:
+        diagonales = []
+        contador = num_columna
+        for fila in matriz:
+            conta_num_letra = 0
+            for letras in fila:
+                for letra in letras:
+                    if conta_num_letra != contador:
+                        conta_num_letra += 1
+                    else:
+                        diagonales.append(letra)
+                        conta_num_letra +=1
+            contador+=1
+        sublista = convertir_a_string(diagonales)
+        diagonales_izq_final.append([sublista])
+        # para saber en cual columna va
+        num_columna +=1
+    # retornar el numero de coincidencias
+    return checar_horizontal(diagonales_izq_final)
+     
 
 
 def diagonales_der(matriz):
@@ -191,18 +198,18 @@ if __name__ == '__main__':
         "TCACTG" 
     ]
     # dna = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTW" ]
-    # algoritmo(dna_mutante)
+    algoritmo(dna_mutante)
     # print(checar_vertical(dna_mutante))
     # print(checar_diagonal([['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']]))
 
-    print(diagonales_arriba_mitad([
-        ['ATGCGA'], 
-        ['CAGTGC'], 
-        ['TCATGT'], 
-        ['AGCAGG'], 
-        ['CCCCTA'], 
-        ['TCACTG']
-        ]))
+    # print(diagonales_arriba_mitad([
+    #     ['ATGCGA'], 
+    #     ['CATGGC'], 
+    #     ['TCATGT'], 
+    #     ['AGCATG'], 
+    #     ['CCCCTA'], 
+    #     ['TCACTG']
+    #     ]))
     # print(revertir_matriz([['ATGCGA'], ['CAGTGC'], ['TTATGT'], ['AGAAGG'], ['CCCCTA'], ['TCACTG']]))
     # print(diagonales_abajo_mitad([
     #     ['ATGCGA'], 
