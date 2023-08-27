@@ -7,3 +7,21 @@ Realizar un algoritmo que detecte si una persona tiene diferencias genéticas ba
 Sabrás sí existe una mutación si se encuentra más de una secuencia de cuatro letras iguales, de forma oblicua, horizontal o vertical. Ejemplo de caso con mutación:
 String[] dna = [“ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" ];
 En este caso el algoritmo devuelve true . 
+
+# Configuración Dev container Podman
+VSCode User settings
+```
+{
+    "dev.containers.executeInWSL": true,
+    "dev.containers.dockerPath": "/usr/bin/podman"
+}
+```
+Puedes revisando dónde está instalado podman usando comando
+`which podman`
+
+Habilita SystemD en WSL creando `/etc/wsl.conf` en tu distro
+```
+[boot]
+systemd=true
+
+```
