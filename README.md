@@ -25,3 +25,101 @@ Habilita SystemD en WSL creando `/etc/wsl.conf` en tu distro
 systemd=true
 
 ```
+Para ejecutar los test 
+`pytest` dentro del folder raíz 
+
+Ejemplo Input:
+
+
+|   |   |   |   |   |   |
+| - | - | - | - | - | - |
+| A | T | G | C | G | A |
+| A | A | G | T | A | A |
+| A | T | A | A | G | A |
+| A | G | A | A | G | A |
+| C | C | C | C | T | A |
+| A | A | A | A | T | G |
+
+Diagonales superior izquierda  
+
+Coincidencias: 1
+|   |   |   |   |   |   |
+| - | - | - | - | - | - |
+| **A** | **T** | **G** | **C** | **G** | **A** |
+| A | **A** | **G** | **T** | **A** | **A** |
+| A | T | **A** | **A** | **G** | **A** |
+| A | G | A | **A** | **G** | **A** |
+| C | C | C | C | **T** | **A** |
+| A | A | A | A | T | **G** |
+```
+{
+    [A,A,A,A,T,G],
+    [T,G,A,G,A],
+    [G,T,G,A],
+    [C,A,A],
+    [G,A],
+    [A]
+}
+```
+
+Diagonales inferior izquierda
+
+Coincidencias: 0
+|   |   |   |   |   |   |
+| - | - | - | - | - | - |
+| A | T | G | C | G | A |
+| **A** | A | G | T | A | A |
+| **A** | **T** | A | A | G | A |
+| **A** | **G** | **A** | A | G | A |
+| **C** | **C** | **C** | **C** | T | A |
+| **A** | **A** | **A** | **A** | **T** | G |
+```
+{
+    [A,T,A,C,T],
+    [A,G,C,A],
+    [A,C,A],
+    [C,A],
+    [A]
+}
+```
+Diagonales superior derecha
+
+Coincidencias: 1
+|   |   |   |   |   |   |
+| - | - | - | - | - | - |
+| **A** | **T** | **G** | **C** | **G** | **A** |
+| **A** | **A** | **G** | **T** | **A** | A |
+| **A** | **T** | **A** | **A** | G | A |
+| **A** | **G** | **A** | A | G | A |
+| **C** | **C** | C | C | T | A |
+| **A** | A | A | A | T | G |
+```
+{
+    [A,A,A,A,C,A],
+    [G,T,A,G,C],
+    [C,G,T,A],
+    [G,A,A],
+    [T,A],
+    [A]
+}
+```
+Diagonales inferior derecha
+
+Coincidencias: 0
+|   |   |   |   |   |   |
+| - | - | - | - | - | - |
+| A | T | G | C | G | A |
+| A | A | G | T | A | **A** |
+| A | T | A | A| **G** | **A** |
+| A | G | A | **A** | **G**| **A** |
+| C | C | **C** | **C** | **T** | **A** |
+| A | **A** | **A** | **A** | **T** | **G** |
+```
+{
+    [A,G,A,C,A],
+    [A,G,C,A],
+    [A,T,A],
+    [A,T],
+    [G]
+}
+```
